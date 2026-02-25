@@ -1,9 +1,6 @@
 import { DatabaseSync } from 'node:sqlite';
 
-const dbPath = process.env.NODE_ENV === "production"
-    ? "/data/database.db"
-    : "./database.db";
-
+const dbPath = "./database.sqlite";
 const db = new DatabaseSync(dbPath);
 
 db.exec(`
