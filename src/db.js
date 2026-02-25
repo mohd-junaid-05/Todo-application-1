@@ -1,7 +1,12 @@
 import { DatabaseSync } from 'node:sqlite';
+const dbPath =
+  process.env.NODE_ENV === "production"
+    ? "/tmp/database.sqlite"
+    : "./database.sqlite";
 
-const dbPath = "./database.sqlite";
-const db = new DatabaseSync(dbPath);
+
+
+    const db = new DatabaseSync(dbPath);
 
 db.exec(`
     CREATE TABLE IF NOT EXISTS user(
