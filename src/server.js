@@ -3,8 +3,7 @@ console.log(`
 
 `);
 
-import dotenv from "dotenv";
-dotenv.config();
+
 
 import express from "express"
 import path , {dirname} from "path"
@@ -12,7 +11,12 @@ import { fileURLToPath } from "url";
 import authRoutes from './Routes/authRoutes.js'
 import todoRoutes from './Routes/todoRoutes.js'
 import authMiddleWare from "./middleware/authMiddleware.js";
+
+
+
 import db from "./db.js";
+import dotenv from "dotenv";
+dotenv.config();
 
 const app = express();
 
@@ -30,6 +34,21 @@ app.use(express.json());
 app.use('/auth', authRoutes);
 app.use('/todos',authMiddleWare, todoRoutes);
 
+const PORT = process.env.PORT || 10000;
+
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Server running on port ${PORT}`);
+});
+
+
+
+
+
+
+
+
+
+
 //checking users in the db 
 app.get('/user', (req, res) => {
     try {
@@ -43,13 +62,6 @@ app.get('/user', (req, res) => {
 
 
 
-
-
-const PORT = process.env.PORT || 10000;
-
-app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Server running on port ${PORT}`);
-});
 
 app.get('/' , async(req,res) =>{
     res.sendFile(path.join(__dirname,'public' , 'index.html'));
