@@ -1,12 +1,11 @@
-import { DatabaseSync } from 'node:sqlite';
+import Database from "better-sqlite3";
+
 const dbPath =
   process.env.NODE_ENV === "production"
     ? "/tmp/database.sqlite"
     : "./database.sqlite";
 
-
-
-    const db = new DatabaseSync(dbPath);
+const db = new Database(dbPath);
 
 db.exec(`
     CREATE TABLE IF NOT EXISTS user(
