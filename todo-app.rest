@@ -1,0 +1,60 @@
+###
+
+GET http://localhost:5000/ 
+
+###
+
+GET http://localhost:5000/user
+### to register the user
+
+
+POST http://localhost:5000/auth/register
+Content-Type: application/json
+
+{
+    "username" : "Junaid",
+    "password" : "thisisthe"
+}
+
+### to login the user
+POST http://localhost:5000/auth/login
+Content-Type: application/json
+
+{
+    "username" : "test@gmail.com",
+    "password" : "test@gmail.com"
+}
+###
+
+
+GET http://localhost:5000/db
+
+
+###
+
+GET http://localhost:5000/todos
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNzcxNDAzMzA1LCJleHAiOjE3NzE0ODk3MDV9.TlwoxnOEM8PtD6gbnrggdTWgIDk39mPjBo8-OZd-w84
+###
+
+POST http://localhost:5000/todos
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzcxMDkyOTQ3LCJleHAiOjE3NzExNzkzNDd9.b0EaeHRrdW-9p03KXDLKAN2LZ4Rm-VSYz5tGLvEqu0s
+Content-Type: application/json
+
+{
+    "task" : "learning  Python  "
+}
+
+
+### update todo /PUT
+
+PUT http://localhost:5000/todos/1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzcxMDkyOTQ3LCJleHAiOjE3NzExNzkzNDd9.b0EaeHRrdW-9p03KXDLKAN2LZ4Rm-VSYz5tGLvEqu0s
+Content-Type: application/json
+
+{
+    "completed" : 1
+}
+
+###
+DELETE  http://localhost:5000/todos/21
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzcxMDkyOTQ3LCJleHAiOjE3NzExNzkzNDd9.b0EaeHRrdW-9p03KXDLKAN2LZ4Rm-VSYz5tGLvEqu0s
