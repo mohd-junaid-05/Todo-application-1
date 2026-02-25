@@ -15,7 +15,7 @@ import authMiddleWare from "./middleware/authMiddleware.js";
 import db from "./db.js";
 
 const app = express();
-const PORT = process.env.PORT || 5000
+
 
 
 const __filename = fileURLToPath(import.meta.url);
@@ -45,9 +45,11 @@ app.get('/user', (req, res) => {
 
 
 
-app.listen(PORT, () =>{
-    console.log(`server is running on http://localhost:${PORT}`);
-})
+const PORT = process.env.PORT || 10000;
+
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Server running on port ${PORT}`);
+});
 
 app.get('/' , async(req,res) =>{
     res.sendFile(path.join(__dirname,'public' , 'index.html'));
